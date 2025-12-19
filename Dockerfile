@@ -100,9 +100,9 @@ RUN \
     else \
         echo "Unsupported architecture: ${BUILD_ARCH}"; exit 1; \
     fi \
-    && curl -L $BORE_URL --output /tmp/bore.tar.gz \
+    && curl -L "$BORE_URL" --output /tmp/bore.tar.gz \
     && tar -xzf /tmp/bore.tar.gz -C /tmp/ \
-    && mv /tmp/$EXTRACT_DIR/frpc /usr/local/bin/frpc \
+    && mv "/tmp/$EXTRACT_DIR/frpc" /usr/local/bin/frpc \
     && chmod +x /usr/local/bin/frpc \
     && rm /tmp/bore.tar.gz
 
