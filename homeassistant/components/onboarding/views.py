@@ -62,6 +62,7 @@ async def async_setup(
     hass.http.register_view(RestoreBackupView(data))
     hass.http.register_view(UploadBackupView(data))
 
+
 class OnboardingView(HomeAssistantView):
     """Return the onboarding status."""
 

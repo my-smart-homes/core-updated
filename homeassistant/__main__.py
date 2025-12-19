@@ -6,13 +6,12 @@ import argparse
 import asyncio
 from contextlib import suppress
 import faulthandler
+import logging
 import os
 import sys
 import threading
-import requests
-import socket
+
 import aiohttp
-import logging
 
 from . import msh_utils
 from .backup_restore import restore_backup
@@ -32,8 +31,7 @@ PUBLIC_IP_SERVICES = [
 async def get_public_internet_ip(
     max_retries: int = 3, initial_delay_seconds: int = 1
 ) -> str:
-    """
-    Robustly retrieves the public IP address of the machine (or its egress point)
+    """Robustly retrieves the public IP address of the machine (or its egress point)
     by querying multiple external services using aiohttp. Returns '127.0.0.1' if all fail.
     """
     for retry_attempt in range(max_retries):
@@ -57,7 +55,7 @@ async def get_public_internet_ip(
                             f"Successfully retrieved public IP: {public_ip} from {service_url}"
                         )
                         return public_ip
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 logging.warning(
                     f"Timeout occurred fetching IP from {service_url}. Trying next service."
                 )
