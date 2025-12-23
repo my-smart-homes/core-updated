@@ -19,6 +19,9 @@
   ],
   "documentation": "https://www.home-assistant.io/integrations/frontend",
   "integration_type": "system",
+  "preview_features": {
+    "winter_mode": {}
+  },
   "quality_scale": "internal",
   "requirements": ["my-smart-homes-frontend==20241228.0"]
 }
